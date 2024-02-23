@@ -24,6 +24,7 @@ class AssassinViewModel : ViewModel() {
 
     fun addPlayer() {
         _players.add(Player(inputName))
+        inputName = ""
     }
 
     fun updateInputName(name: String){
