@@ -1,12 +1,14 @@
 package com.example.mtgassassin.utils
 
-import com.example.mtgassassin.data.Player
+import com.example.mtgassassin.model.Player
 
-val testPlayersList = mutableListOf(
-    Player("Robin"),
-    Player("Mickaël"),
-    Player("Victor"),
-    Player("Pierre"),
-    Player("Numa"),
-    Player("Alex"),
-)
+object TestData {
+    val playersList = mutableListOf(
+        Player("Robin", "Mickaël"),
+        Player("Mickaël", "Victor"),
+        Player("Victor", "Pierre"),
+        Player("Pierre", "Numa"),
+        Player("Numa", "Alex"),
+        Player("Alex", "Robin"),
+    )
+}

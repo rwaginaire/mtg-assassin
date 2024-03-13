@@ -3,4 +3,5 @@
     <string name="add">Ajouter</string>
     <string name="play">C\'est parti !</string>
     <string name="player_name">Nom joueur</string>
+    <string name="results">Résultats</string>
 </resources>
