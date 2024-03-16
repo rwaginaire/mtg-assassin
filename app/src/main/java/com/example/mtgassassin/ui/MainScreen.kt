@@ -45,8 +45,7 @@ fun MTGAssassinApp(
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = AssassinScreen.Home.name,
-            modifier = Modifier.padding(innerPadding)
+            startDestination = AssassinScreen.Home.name
         ) {
             composable(route = AssassinScreen.Home.name) {
                 HomeScreen(
@@ -58,7 +57,8 @@ fun MTGAssassinApp(
                     onStartClick = {
                         viewModel.drawTargets()
                         navController.navigate(AssassinScreen.Results.name)
-                    }
+                    },
+                    modifier = Modifier.padding(innerPadding)
                 )
             }
             composable(route = AssassinScreen.Results.name) {
