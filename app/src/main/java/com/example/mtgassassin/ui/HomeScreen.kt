@@ -52,7 +52,6 @@ fun HomeScreen(
             onRemovePlayer = onRemovePlayer,
             modifier = Modifier.weight(1f)
         )
-        //Spacer(modifier = Modifier.weight(1f))
         Button(
             onClick = onStartClick,
             modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))

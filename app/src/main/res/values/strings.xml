@@ -4,4 +4,8 @@
     <string name="play">C\'est parti !</string>
     <string name="player_name">Nom joueur</string>
     <string name="results">Résultats</string>
+    <string name="show_target">Voir cible</string>
+    <string name="target_shown">Voici ta cible !</string>
+    <string name="ok">OK</string>
+    <string name="take_phone">%s prend le téléphone</string>
 </resources>

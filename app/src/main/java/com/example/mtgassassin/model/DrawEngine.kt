@@ -2,6 +2,8 @@ package com.example.mtgassassin.model
 
 class DrawEngine {
     private lateinit var _players: Array<Player>
+    val numberOfPlayer: Int
+        get() = _players.size
 
     val players: List<Player>
         get() = _players.toList()
