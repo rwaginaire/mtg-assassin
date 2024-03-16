@@ -58,6 +58,7 @@ fun MTGAssassinApp(
                         viewModel.drawTargets()
                         navController.navigate(AssassinScreen.Results.name)
                     },
+                    emptyName = uiState.isNameEmpty,
                     modifier = Modifier.padding(innerPadding)
                 )
             }

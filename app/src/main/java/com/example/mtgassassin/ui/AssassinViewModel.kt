@@ -33,8 +33,18 @@ class AssassinViewModel : ViewModel() {
     }
 
     fun addPlayer() {
-        _inputPlayers.add(Player(inputName.trim()))
-        inputName = ""
+        if (inputName.isNotBlank()) {
+            _inputPlayers.add(Player(inputName.trim()))
+            inputName = ""
+            _uiState.update {
+                it.copy(isNameEmpty = false)
+            }
+        }
+        else {
+            _uiState.update {
+                it.copy(isNameEmpty = true)
+            }
+        }
     }
 
     fun updateInputName(name: String) {

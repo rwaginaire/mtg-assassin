@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -37,6 +38,7 @@ fun HomeScreen(
     onInputPlayerChange: (String) -> Unit,
     inputName: String,
     onStartClick: () -> Unit,
+    emptyName: Boolean,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -46,7 +48,8 @@ fun HomeScreen(
         AddPlayerComponent(
             playerName = inputName,
             onNameChange = onInputPlayerChange,
-            onAddClick = onAddClick
+            onAddClick = onAddClick,
+            emptyName = emptyName
         )
         PlayersListDisplay(
             playersList = playersList,
@@ -83,6 +86,7 @@ fun AddPlayerComponent(
     playerName: String,
     onNameChange: (String) -> Unit,
     onAddClick: () -> Unit,
+    emptyName: Boolean,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -93,11 +97,18 @@ fun AddPlayerComponent(
             end = dimensionResource(R.dimen.padding_small)
         )
     ) {
-        TextField(
+        OutlinedTextField(
             value = playerName,
             onValueChange = onNameChange,
-            label = { Text(stringResource(R.string.player_name)) },
+            label = {
+                if (emptyName) {
+                    Text(stringResource(R.string.empty_name))
+                } else {
+                    Text(stringResource(R.string.player_name))
+                }
+             },
             singleLine = true,
+            isError = emptyName,
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 imeAction = ImeAction.Done
@@ -146,6 +157,7 @@ fun HomeScreenPreview() {
             onAddClick = {},
             onInputPlayerChange = {},
             inputName = "",
+            emptyName = false,
             onStartClick = {}
         )
     }

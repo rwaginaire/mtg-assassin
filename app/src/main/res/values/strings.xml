@@ -8,4 +8,5 @@
     <string name="target_shown">Voici ta cible !</string>
     <string name="ok">OK</string>
     <string name="take_phone">%s prend le téléphone</string>
+    <string name="empty_name">Nom vide !</string>
 </resources>
