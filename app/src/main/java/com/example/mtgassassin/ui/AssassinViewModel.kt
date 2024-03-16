@@ -33,7 +33,7 @@ class AssassinViewModel : ViewModel() {
     }
 
     fun addPlayer() {
-        _inputPlayers.add(Player(inputName))
+        _inputPlayers.add(Player(inputName.trim()))
         inputName = ""
     }
 

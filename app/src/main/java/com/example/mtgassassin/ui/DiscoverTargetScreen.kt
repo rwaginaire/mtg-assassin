@@ -39,7 +39,8 @@ fun DiscoverTargetScreen(
         Text(
             text = stringResource(R.string.take_phone, player.name),
             style = MaterialTheme.typography.headlineLarge,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
         )
         Button(
             onClick = onShowClick,
