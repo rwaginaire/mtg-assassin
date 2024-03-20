@@ -75,6 +75,22 @@ class AssassinViewModel : ViewModel() {
         }
     }
 
+    fun throwPlayerNumberAlert() {
+        _uiState.update {
+            it.copy(
+                notEnoughPlayers = true
+            )
+        }
+    }
+
+    fun dismissPlayerNumberAlert() {
+        _uiState.update {
+            it.copy(
+                notEnoughPlayers = false
+            )
+        }
+    }
+
     fun resetApp() {
         _inputPlayers.clear()
         _uiState.value = AssassinUiState()

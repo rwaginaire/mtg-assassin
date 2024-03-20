@@ -54,11 +54,10 @@ fun MTGAssassinApp(
                     onAddClick = { viewModel.addPlayer() },
                     onInputPlayerChange = { input -> viewModel.updateInputName(input) },
                     inputName = viewModel.inputName,
-                    onStartClick = {
-                        viewModel.drawTargets()
-                        navController.navigate(AssassinScreen.Results.name)
-                    },
+                    onStartClick = { onStartClick(viewModel, navController) },
                     emptyName = uiState.isNameEmpty,
+                    onDismissAlert = { viewModel.dismissPlayerNumberAlert() },
+                    notEnoughPlayers = uiState.notEnoughPlayers,
                     modifier = Modifier.padding(innerPadding)
                 )
             }
@@ -84,5 +83,17 @@ private fun navigateToNextPlayer(
     }
     else {
         viewModel.goToNextPlayer()
+    }
+}
+
+private fun onStartClick(
+    viewModel: AssassinViewModel,
+    navController: NavHostController
+) {
+    if (viewModel.inputPlayersList.size >= 3) {
+        viewModel.drawTargets()
+        navController.navigate(AssassinScreen.Results.name)
+    } else {
+        viewModel.throwPlayerNumberAlert()
     }
 }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,7 +25,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.mtgassassin.R
 import com.example.mtgassassin.model.Player
 import com.example.mtgassassin.ui.theme.MTGAssassinTheme
@@ -39,6 +42,8 @@ fun HomeScreen(
     inputName: String,
     onStartClick: () -> Unit,
     emptyName: Boolean,
+    onDismissAlert: () -> Unit,
+    notEnoughPlayers: Boolean,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -61,6 +66,11 @@ fun HomeScreen(
             modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
         ) {
             Text(stringResource(R.string.play))
+        }
+        if (notEnoughPlayers) {
+            NotEnoughPlayersDialog(
+                onDismiss = onDismissAlert
+            )
         }
     }
 }
@@ -147,6 +157,29 @@ fun PlayerItem(
     }
 }
 
+@Composable
+private fun NotEnoughPlayersDialog(
+    onDismiss: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        text = {
+            Text(
+                text = stringResource(R.string.not_enough_players),
+                modifier = Modifier
+                    .fillMaxWidth(),
+            )
+        },
+        modifier = modifier,
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(text = stringResource(R.string.ok))
+            }
+        },
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
@@ -158,7 +191,9 @@ fun HomeScreenPreview() {
             onInputPlayerChange = {},
             inputName = "",
             emptyName = false,
-            onStartClick = {}
+            onStartClick = {},
+            onDismissAlert = {},
+            notEnoughPlayers = false
         )
     }
 }
